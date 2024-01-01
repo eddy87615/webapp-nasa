@@ -1,4 +1,16 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: false,
+  images: {
+    domains: ['www.thecocktaildb.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.thecocktaildb.com',
+        port: '',
+        pathname: '/images/media/drink',
+      },
+    ],
+  },
+};
