@@ -3,13 +3,19 @@
 module.exports = {
   reactStrictMode: false,
   images: {
-    domains: ['www.thecocktaildb.com'],
+    domains: ['apod.nasa.gov', 'images-api.nasa.gov', 'images-assets.nasa.gov'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.thecocktaildb.com',
+        hostname: 'apod.nasa.gov',
         port: '',
-        pathname: '/images/media/drink',
+        pathname: '/apod.nasa.gov/apod/image/2401',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images-api.nasa.gov',
+        port: '',
+        pathname: '/image',
       },
     ],
   },

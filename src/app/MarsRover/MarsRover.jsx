@@ -1,3 +1,5 @@
+import Back from '../Back/Back';
+
 export default function MarsRover() {
-  return <div>123123132</div>;
+  return <Back />;
 }
