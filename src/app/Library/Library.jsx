@@ -11,14 +11,16 @@ export default function Library() {
   useEffect(() => {
     const fetchRandomPic = async () => {
       try {
-        const response = await fetch(
-          'https://images-api.nasa.gov/search?q=random'
-        );
-        const data = await response.json();
-        if (data.collection.items.length > 0) {
-          setRandomPic(data.collection.items);
-        } else {
-          setRandomPic([]);
+        if (typeof document !== 'indefined') {
+          const response = await fetch(
+            'https://images-api.nasa.gov/search?q=random'
+          );
+          const data = await response.json();
+          if (data.collection.items.length > 0) {
+            setRandomPic(data.collection.items);
+          } else {
+            setRandomPic([]);
+          }
         }
       } catch (error) {
         console.error('ERRPR', error);

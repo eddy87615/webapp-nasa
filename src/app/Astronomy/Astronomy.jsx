@@ -33,12 +33,14 @@ export default function Astronomy() {
           <span className="font-normal text-white text-right">
             {astronomypic.date}
           </span>
-          <Image
-            src={astronomypic.hdurl}
-            width={500}
-            height={500}
-            alt="NASA image for today"
-          />
+          {typeof document !== 'undefined' && (
+            <Image
+              src={astronomypic.hdurl}
+              width={500}
+              height={500}
+              alt="NASA image for today"
+            />
+          )}
           <p className="text-white leading-[2rem]">
             {astronomypic.explanation}
           </p>

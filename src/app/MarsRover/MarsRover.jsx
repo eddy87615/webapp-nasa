@@ -7,16 +7,18 @@ export default function MarsRover() {
   useEffect(() => {
     const marsPic = async () => {
       try {
-        const roverResponse = await fetch(
-          'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity?api_key=mrQDAufdFomWkLGpaRyMRdelGmAMAqZCwTHtgTeX'
-        );
-        const roverData = await roverResponse.json();
-        const latest = roverData.rover.max_sol;
+        if (typeof document !== 'undefined') {
+          const roverResponse = await fetch(
+            'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity?api_key=mrQDAufdFomWkLGpaRyMRdelGmAMAqZCwTHtgTeX'
+          );
+          const roverData = await roverResponse.json();
+          const latest = roverData.rover.max_sol;
 
-        const picResponse = await fetch(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${latest}&api_key=mrQDAufdFomWkLGpaRyMRdelGmAMAqZCwTHtgTeX`
-        );
-        const picData = await picResponse.json();
+          const picResponse = await fetch(
+            `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${latest}&api_key=mrQDAufdFomWkLGpaRyMRdelGmAMAqZCwTHtgTeX`
+          );
+          const picData = await picResponse.json();
+        }
 
         setMars(picData.photos);
       } catch (error) {
