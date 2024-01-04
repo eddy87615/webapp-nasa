@@ -1,3 +1,4 @@
+'use client';
 import Back from '../Back/Back';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
@@ -11,7 +12,7 @@ export default function Library() {
   useEffect(() => {
     const fetchRandomPic = async () => {
       try {
-        if (typeof document !== 'indefined') {
+        if (typeof document !== 'undefined' && typeof window !== 'undefined') {
           const response = await fetch(
             'https://images-api.nasa.gov/search?q=random'
           );

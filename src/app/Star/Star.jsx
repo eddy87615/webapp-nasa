@@ -1,3 +1,4 @@
+'use client';
 import './Star.css';
 
 export default function Star() {

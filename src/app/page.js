@@ -12,11 +12,10 @@ export default function App() {
     <>
       <Star />
       <BrowserRouter>
-        {/* <Home /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Astronomy" element={<Astronomy />} />
-          <Route path="/Weather" element={<Weather />} />
+          {/* <Route path="/Weather" element={<Weather />} /> */}
           <Route path="/MarsRover" element={<MarsRover />} />
           <Route path="/Library" element={<Library />} />
         </Routes>

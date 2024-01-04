@@ -1,3 +1,4 @@
+'use client';
 import Back from '../Back/Back';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';

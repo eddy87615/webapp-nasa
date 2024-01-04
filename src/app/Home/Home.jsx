@@ -6,37 +6,15 @@ import Image from 'next/image';
 import Library from '../Library/Library';
 
 export default function Home() {
-  const [getCocktail, isGetCocktail] = useState(null);
-
-  async function mycocktail() {
-    const res = await fetch(
-      'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-    );
-    const data = await res.json();
-    isGetCocktail(data.drinks[0]);
-  }
-
-  useEffect(function () {
-    mycocktail();
-  }, []);
-
-  //   if (!getCocktail) {
-  //     return (
-  //       <p className="text-white absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-[2rem]">
-  //         Loading...
-  //       </p>
-  //     );
-  //   }
-
   const btinfo = [
     {
       txt: 'Astronomy Picture of the day',
       link: '../Astronomy',
     },
-    {
-      txt: 'Weather on Mars',
-      link: '../Weather',
-    },
+    // {
+    //   txt: 'Weather on Mars',
+    //   link: '../Weather',
+    // },
     {
       txt: 'Mars Rover',
       link: '../MarsRover',
@@ -56,7 +34,7 @@ export default function Home() {
           Know more about the universe with NASA API.
         </span>
       </h1>
-      <p className="text-white text-center text-[0.7rem]">
+      <p className="text-white text-center text-[0.8rem]">
         The National Aeronautics and Space Administration is an independent
         agency of the U.S. federal government responsible for the civil space
         program, aeronautics research, and space research.
@@ -73,6 +51,32 @@ export default function Home() {
             </Link>
           </li>
         ))}
+      </ul>
+      <ul className="flex justify-center items-center my-20 gap-10">
+        <li>
+          <a href="https://api.nasa.gov/" target="_black" alt="nasa api site">
+            <Image
+              src="/favicon-192.png"
+              alt="nasa logo"
+              width={50}
+              height={50}
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/eddy87615/webapp-nasa.git"
+            target="_black"
+            alt="this project github"
+          >
+            <Image
+              src="/GitHub_Invertocat_Logo.png"
+              alt="github logo"
+              width={50}
+              height={50}
+            />
+          </a>
+        </li>
       </ul>
       {/* <Image src="/favicon-192.png" width={100} height={100} alt="nasa logo" /> */}
     </div>

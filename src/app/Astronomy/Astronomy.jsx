@@ -1,3 +1,4 @@
+'use client';
 import Back from '../Back/Back';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
@@ -7,11 +8,13 @@ export default function Astronomy() {
   useEffect(() => {
     const fecthData = async () => {
       try {
-        const response = await fetch(
-          'https://api.nasa.gov/planetary/apod?api_key=mrQDAufdFomWkLGpaRyMRdelGmAMAqZCwTHtgTeX'
-        );
-        const data = await response.json();
-        setAstronomypic(data);
+        if (typeof document !== 'undefined' && typeof window !== 'undefined') {
+          const response = await fetch(
+            'https://api.nasa.gov/planetary/apod?api_key=mrQDAufdFomWkLGpaRyMRdelGmAMAqZCwTHtgTeX'
+          );
+          const data = await response.json();
+          setAstronomypic(data);
+        }
       } catch (error) {
         console.error('Error fetching astronomy picture', error);
       }
@@ -33,14 +36,14 @@ export default function Astronomy() {
           <span className="font-normal text-white text-right">
             {astronomypic.date}
           </span>
-          {typeof document !== 'undefined' && (
-            <Image
-              src={astronomypic.hdurl}
-              width={500}
-              height={500}
-              alt="NASA image for today"
-            />
-          )}
+
+          <Image
+            src={astronomypic.hdurl}
+            width={500}
+            height={500}
+            alt="NASA image for today"
+          />
+
           <p className="text-white leading-[2rem]">
             {astronomypic.explanation}
           </p>

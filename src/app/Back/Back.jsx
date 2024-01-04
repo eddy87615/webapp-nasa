@@ -1,3 +1,4 @@
+'use client';
 import { BrowserRouter, Route, Switch, Link, Routes } from 'react-router-dom';
 import { TiArrowBack } from 'react-icons/ti';
 
