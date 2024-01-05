@@ -1,9 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch, Link, Routes } from 'react-router-dom';
 
 import Image from 'next/image';
-import Library from '../Library/Library';
 
 export default function Home() {
   const btinfo = [

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
+  ssr: false,
   reactStrictMode: false,
   images: {
     domains: [
