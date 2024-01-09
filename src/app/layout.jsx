@@ -8,13 +8,16 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: '',
+  title: 'Explore NASA',
   description: '',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon-192.png" />
+      </head>
       <body className={montserrat.className}>
         <Star />
         {children}
