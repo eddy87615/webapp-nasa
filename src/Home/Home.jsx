@@ -1,6 +1,5 @@
 'use client';
 import { BrowserRouter, Route, Switch, Link, Routes } from 'react-router-dom';
-
 import Image from 'next/image';
 
 export default function Home() {
@@ -9,10 +8,6 @@ export default function Home() {
       txt: 'Astronomy Picture of the day',
       link: '../Astronomy',
     },
-    // {
-    //   txt: 'Weather on Mars',
-    //   link: '../Weather',
-    // },
     {
       txt: 'Mars Rover',
       link: '../MarsRover',
@@ -40,43 +35,19 @@ export default function Home() {
       <ul className="flex flex-col gap-10 mt-[15%]">
         {btinfo.map((inner, index) => (
           <li key={index}>
-            <Link
-              to={inner.link}
-              className="text-white text-center w-[80%] flex justify-center items-center 
+            {typeof document !== 'undefined' &&
+              typeof window !== 'undefined' && (
+                <Link
+                  to={inner.link}
+                  className="text-white text-center w-[80%] flex justify-center items-center 
               border-4 mx-auto py-6 rounded-2xl"
-            >
-              {inner.txt}
-            </Link>
+                >
+                  {inner.txt}
+                </Link>
+              )}
           </li>
         ))}
       </ul>
-      <ul className="flex justify-center items-center my-20 gap-10">
-        <li>
-          <a href="https://api.nasa.gov/" target="_black" alt="nasa api site">
-            <Image
-              src="/favicon-192.png"
-              alt="nasa logo"
-              width={50}
-              height={50}
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/eddy87615/webapp-nasa.git"
-            target="_black"
-            alt="this project github"
-          >
-            <Image
-              src="/GitHub_Invertocat_Logo.png"
-              alt="github logo"
-              width={50}
-              height={50}
-            />
-          </a>
-        </li>
-      </ul>
-      {/* <Image src="/favicon-192.png" width={100} height={100} alt="nasa logo" /> */}
     </div>
   );
 }
