@@ -1,52 +1,52 @@
 'use client';
-import Back from '@/Back/Back';
+import Back from '@/components/Back/Back';
+import Loading from './loading';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 export default function Library() {
   const [query, setQuery] = useState('');
-  const [searchResult, setSearchResult] = useState([]);
   const [randomPic, setRandomPic] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchRandomPic = async () => {
       try {
-        if (typeof document !== 'undefined' && typeof window !== 'undefined') {
-          const response = await fetch(
-            'https://images-api.nasa.gov/search?q=random'
-          );
-          const data = await response.json();
-          if (data.collection.items.length > 0) {
-            setRandomPic(data.collection.items);
-          } else {
-            setRandomPic([]);
-          }
+        setLoading(true);
+        const response = await fetch(
+          'https://images-api.nasa.gov/search?q=random'
+        );
+        const data = await response.json();
+
+        if (data.collection.items.length > 0) {
+          setRandomPic(data.collection.items);
+          setLoading(false);
         }
       } catch (error) {
-        console.error('ERRPR', error);
+        console.error('Error fetching random picture', error);
       }
     };
     fetchRandomPic();
   }, []);
 
-  const handleSearch = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `https://images-api.nasa.gov/search?q=${query}`
-      );
-      const data = await response.json();
-      if (data.collection.items.length > 0) {
-        setSearchResult(data.collection.items);
-      } else {
-        setSearchResult([]);
-      }
-    } catch (error) {
-      console.error('ERROR', error);
-    } finally {
-      setLoading(false);
-    }
+  const handleSearch = () => {
+    setLoading(true);
+    fetch(`https://images-api.nasa.gov/search?q=${query}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.collection.items.length > 0) {
+          setSearchResult(data.collection.items);
+        } else {
+          setSearchResult([]);
+        }
+      })
+      .catch((error) => {
+        console.error('ERROR', error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -73,12 +73,7 @@ export default function Library() {
           SEARCH
         </button>
         {loading ? (
-          <p
-            className="text-white text-[1.5rem] text-center
-          absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
-          >
-            Loading...
-          </p>
+          <Loading />
         ) : (
           <ul className="flex flex-col gap-[1rem]">
             {query === ''

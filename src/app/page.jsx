@@ -1,20 +1,18 @@
-'use client';
-import { BrowserRouter, Route, Switch, Link, Routes } from 'react-router-dom';
-import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   const btinfo = [
     {
       txt: 'Astronomy Picture of the day',
-      link: '../Astronomy',
+      link: '/astronomy',
     },
     {
       txt: 'Mars Rover',
-      link: '../MarsRover',
+      link: '/marsRover',
     },
     {
       txt: 'NASA Library',
-      link: '../Library',
+      link: '/library',
     },
   ];
 
@@ -35,16 +33,13 @@ export default function Home() {
       <ul className="flex flex-col gap-10 mt-[15%]">
         {btinfo.map((inner, index) => (
           <li key={index}>
-            {typeof document !== 'undefined' &&
-              typeof window !== 'undefined' && (
-                <Link
-                  to={inner.link}
-                  className="text-white text-center w-[80%] flex justify-center items-center 
+            <Link
+              href={inner.link}
+              className="text-white text-center w-[80%] flex justify-center items-center
               border-4 mx-auto py-6 rounded-2xl"
-                >
-                  {inner.txt}
-                </Link>
-              )}
+            >
+              {inner.txt}
+            </Link>
           </li>
         ))}
       </ul>
